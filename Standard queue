@@ -1,0 +1,71 @@
+#include <stdio.h>
+#define MAX_SIZE 3
+void Queue_insert(int Q[MAX_SIZE],int *r)
+{
+    int elem;
+    printf("Insert the element");
+    scanf("%d",&elem);
+    if(*r==(MAX_SIZE)-1)
+    {
+        printf("Insertion not possible");
+        return;
+    }
+    (*r)++;
+    Q[*r]=elem;
+}
+void Queue_delete(int Q[MAX_SIZE],int r,int *front)
+{
+    int elem;
+    if((*front)>r)
+    {
+        printf("Queeu is empty");
+        return;
+    }
+    elem=Q[*front];
+    printf("deleted element is %d",elem);
+    (*front)++;
+}
+void Queue_display(int Q[MAX_SIZE],int r,int front)
+{
+    int i;
+    if(front>r)
+    {
+        printf("it is empty");
+        
+    }
+    else
+    {
+        printf("Elements of queue are\t");
+        for(i=front;i<=r;i++)
+        {
+            printf("%d\t",Q[i]);
+        }
+    }
+}
+int main()
+{
+    int  Q [MAX_SIZE];
+    int ch;
+    int r=-1,front=0;
+    while(1)
+    {
+        printf("Ente the choice\n1.Insert\n2.Deletion\n3.Display\n4.Exit\n");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:
+                  Queue_insert( Q,&r);
+                  break;
+            case 2:
+                  Queue_delete( Q, &r, &front);
+                  break;
+            case 3:
+                  Queue_display( Q, r, front);
+            case 4:
+                  return 0;
+            default:
+                   printf("Enter a valid choice");
+        }
+    }
+    return 0;
+}
